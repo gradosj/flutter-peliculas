@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:peliculas/widgets/widgets.dart';
 
 class DetailsScreen extends StatelessWidget {
   const DetailsScreen({super.key});
@@ -11,7 +12,13 @@ class DetailsScreen extends StatelessWidget {
         body: CustomScrollView(
       slivers: [
         _CustomAppBar(),
-        SliverList(delegate: SliverChildListDelegate([_PosterAndTitle()]))
+        SliverList(
+            delegate: SliverChildListDelegate([
+          _PosterAndTitle(),
+          _Overview(),
+          _Overview(),
+          CastingsCards()
+        ])),
       ],
     ));
   }
@@ -29,6 +36,7 @@ class _CustomAppBar extends StatelessWidget {
         centerTitle: true,
         titlePadding: EdgeInsets.all(0),
         title: Container(
+            margin: EdgeInsets.only(bottom: 10),
             width: double.infinity,
             alignment: Alignment.bottomCenter,
             color: Colors.black12,
@@ -92,6 +100,20 @@ class _PosterAndTitle extends StatelessWidget {
           ],
         )
       ]),
+    );
+  }
+}
+
+class _Overview extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 30, vertical: 20),
+      child: Text(
+        'Exercitation deserunt ipsum aliquip pariatur anim et ullamco ipsum et elit incididunt ea culpa occaecat. Minim pariatur cillum veniam dolor. Nulla dolor laboris cupidatat ad exercitation sunt mollit exercitation cillum occaecat. In ullamco eu voluptate incididunt tempor nulla. Consequat voluptate veniam ut dolor non nisi. Dolore cillum esse consequat cillum pariatur pariatur id.',
+        textAlign: TextAlign.justify,
+        style: Theme.of(context).textTheme.subtitle1,
+      ),
     );
   }
 }
