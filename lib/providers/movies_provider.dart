@@ -1,13 +1,13 @@
-import 'dart:convert';
-
+import '../models/models.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:peliculas/models/now_playing_response.dart';
 
 class MoviesProvider extends ChangeNotifier {
   String _baseURL = 'api.themoviedb.org';
   String _apiKEY = 'b27a63dc8eccb5c6c26eb189c0d70eec';
   String _lenguaje = 'es-ES';
+
+  List<Movie> onDisplayMovies = [];
   MoviesProvider() {
     print('Movies provider inicializado');
 
@@ -23,5 +23,8 @@ class MoviesProvider extends ChangeNotifier {
     final nowPlayingResponse = NowPlayingResponse.fromJson(response.body);
 
     print(nowPlayingResponse.results[5].title);
+
+    onDisplayMovies = nowPlayingResponse.results;
+    notifyListeners(); // esto notifica alos widtes si cambian los estados
   }
 }
