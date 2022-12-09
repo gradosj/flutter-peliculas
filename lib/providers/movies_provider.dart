@@ -7,7 +7,7 @@ import 'package:http/http.dart' as http;
 class MoviesProvider extends ChangeNotifier {
   String _baseURL = 'api.themoviedb.org';
   String _apiKEY = 'b27a63dc8eccb5c6c26eb189c0d70eec';
-  String _lenguaje = 'es-ES';
+  String _language = 'es-ES';
 
   List<Movie> onDisplayMovies = [];
   List<Movie> popularMovies = [];
@@ -23,7 +23,9 @@ class MoviesProvider extends ChangeNotifier {
 
   Future<String> _getJsonData(String endpoint, [int page = 1]) async {
     var url = Uri.https(_baseURL, endpoint,
-        {'api_key': _apiKEY, 'lenguaje': _lenguaje, 'page': '$page'});
+        {'api_key': _apiKEY, 'language': _language, 'page': '$page'});
+
+    print('la url es--------> $url');
 
     // Await the http get response, then decode the json-formatted response.
     final response = await http.get(url);

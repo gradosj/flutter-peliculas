@@ -3,14 +3,14 @@ import 'dart:convert';
 class Movie {
   Movie({
     required this.adult,
-    this.backdropPath,
+    required this.backdropPath,
     required this.genreIds,
     required this.id,
     required this.originalLanguage,
     required this.originalTitle,
     required this.overview,
     required this.popularity,
-    this.posterPath,
+    required this.posterPath,
     this.releaseDate,
     required this.title,
     required this.video,
@@ -36,6 +36,13 @@ class Movie {
   get fullPosterImg {
     if (this.posterPath != null)
       return 'https://image.tmdb.org/t/p/w500${this.posterPath}';
+
+    return 'https://i.stack.imgur.com/GNhxO.png';
+  }
+
+  get fullbackdropPath {
+    if (this.backdropPath != null)
+      return 'https://image.tmdb.org/t/p/w500${this.backdropPath}';
 
     return 'https://i.stack.imgur.com/GNhxO.png';
   }
