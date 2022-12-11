@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:peliculas/providers/movies_provider.dart';
 import 'package:peliculas/screens/screens.dart';
 import 'package:provider/provider.dart';
+//import 'package:flutter/rendering.dart';
 
-void main() => runApp(const AppState());
+void main() {
+  //debugPaintSizeEnabled = true;
+  runApp(const AppState());
+}
 
 class AppState extends StatelessWidget {
   const AppState({super.key});
